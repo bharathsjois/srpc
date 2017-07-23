@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package dts.types;
+
+message DtsMessageHeader {
+    enum MessageType {
+        UNKNOWN = 0;
+        METHOD = 1;
+        RESULT = 2;
+        SIGNAL = 3;
+    }
+    MessageType type = 1;     // The type of data that follows
+    int32 mid = 2;            // The ID of the message
+    int32 rid = 3;            // Incremental IDs to match request-response
+
+    enum MessageNature {
+        DEFAULT = 0;
+        SYNC = 1;
+        ASYNC = 2;
+    }
+    MessageNature nature = 4; // Synchronous? Asynchronous?
+}
+
+message DtsString {
+    string string = 1;
+}
+
+message DtsStringList {
+    repeated string string = 1;
+}
