@@ -4,18 +4,27 @@
 #include "addressbook_service_msghandler.h"
 #include "addressbook_service_if.h"
 
+#include <vector>
+
+using std::vector;
+
 class AddressbookService : public AddressbookServiceIF
 {
 public:
     AddressbookService(std::string host, int port);
-    void startServer(std::string host, int port);
+    void serverLoop(int server_sockfd);
     void start(void);
     void stop(void);
     void wait(void);
+    void onMsgHandlerDisconnected(DtsMessageHandler* handler);
     ~AddressbookService();
 private:
+
+    void startServer(std::string host, int port);
+
     int fd;
-    AddressbookServiceMsgHandler* msgHandler;
+    std::set<DtsMessageHandler*> msgHandlers;
+    std::thread* serverThread;
 };
 
 #endif // ADDRESSBOOK_SERVICE_H

@@ -9,6 +9,7 @@ class AddressbookClientMsgHandler : public DtsMessageHandler
 public:
     AddressbookClientMsgHandler(int fd, AddressbookClientCallbackIF *cb);
     void onData(DtsMessageHeader &msgHdr);
+    void onDisconnection(DtsMessageHandler* handler);
 private:
     AddressbookClientCallbackIF* cb;
 };

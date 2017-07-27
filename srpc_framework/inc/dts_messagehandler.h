@@ -19,7 +19,7 @@ using dts::types::DtsMessageHeader;
 class DtsMessageHandler
 {
 public:
-    DtsMessageHandler(string name, int fd);
+	DtsMessageHandler(string name, int fd);
     virtual ~DtsMessageHandler(){}
     void writeMessage(Message& message);
     void writeDtsMessage(DtsMessage& message);
@@ -29,6 +29,7 @@ public:
     void stop();
     void wait();
     virtual void onData(DtsMessageHeader& msgHdr) = 0;
+    virtual void onDisconnection(DtsMessageHandler* handler) = 0;
     void messageLoop();
     template<typename T>
     void addMessage(T& message);
@@ -40,4 +41,4 @@ private:
     std::thread* messageLoopThread;
 };
 
-#endif // DTSUTIL_H
+#endif // DTS_MESSAGE_HANLDER_H

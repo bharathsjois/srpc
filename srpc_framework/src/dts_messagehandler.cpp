@@ -84,6 +84,7 @@ void DtsMessageHandler::messageLoop(void)
             onData(msgHdr);
         }catch(exception& e) {
             TRACE("%s", e.what());
+            onDisconnection(this);
             break;
         }
     }

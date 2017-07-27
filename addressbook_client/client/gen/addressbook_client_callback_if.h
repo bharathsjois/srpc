@@ -14,6 +14,7 @@ class AddressbookClientCallbackIF
 public:
     virtual void onGetAddressbookResult(addressbook::AddressBook& book) = 0;
     virtual void onGetNumbersResult(addressbook::PhoneNumberList& numbers) = 0;
+    virtual void onServerDisconnection(void) = 0;
     virtual ~AddressbookClientCallbackIF() {}
 };
 

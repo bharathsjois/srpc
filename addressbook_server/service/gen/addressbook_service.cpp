@@ -8,22 +8,29 @@
 
 using std::logic_error;
 
+void serverThreadCallback(AddressbookService* service, int server_sockfd)
+{
+	service->serverLoop(server_sockfd);
+}
+
 AddressbookService::AddressbookService(std::string host, int port)
 {
     startServer(host, port);
-    msgHandler = new AddressbookServiceMsgHandler(fd, this);
 }
 
 AddressbookService::~AddressbookService()
 {
-    delete msgHandler;
+    for(DtsMessageHandler* handler : msgHandlers)
+    {
+    	delete handler;
+    }
 }
 
 void AddressbookService::startServer(std::string host, int port)
 {
-	TRACE_INFO("Starting server on %s", host.c_str());
-    struct sockaddr_in serv_addr, client_addr;
-    int server_sockfd, client_len, client_socketfd;
+	TRACE_INFO("Starting server on %s:%d", host.c_str(),port);
+    struct sockaddr_in serv_addr;
+    int server_sockfd;
     server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_sockfd < 0)
     {
@@ -41,30 +48,53 @@ void AddressbookService::startServer(std::string host, int port)
        throw logic_error("Error binding to port");
     }
 
-    listen(server_sockfd,5);
-    client_len = sizeof(client_addr);
-    client_socketfd = accept(server_sockfd, (struct sockaddr *) &client_addr, (socklen_t*)&client_len);
-    TRACE_INFO("New client arrived");
-    if (client_socketfd < 0)
-    {
-        throw logic_error("Error accepting client");
-    }
-    fd = client_socketfd;
+    serverThread = new std::thread(serverThreadCallback, this, server_sockfd);
+}
+
+void AddressbookService::serverLoop(int server_sockfd)
+{
+	int client_len, client_socketfd;
+	struct sockaddr_in client_addr;
+	while(1)
+	{
+		listen(server_sockfd,5);
+		client_len = sizeof(client_addr);
+		client_socketfd = accept(server_sockfd, (struct sockaddr *) &client_addr, (socklen_t*)&client_len);
+		TRACE_INFO("New client arrived");
+		if (client_socketfd < 0)
+		{
+			throw logic_error("Error accepting client");
+		}
+		AddressbookServiceMsgHandler* msgHandler = new AddressbookServiceMsgHandler(client_socketfd, this);
+		msgHandlers.insert(msgHandler);
+		msgHandler->start();
+	}
 }
 
 void AddressbookService::start(void)
 {
 	TRACE("Starting service...");
-    msgHandler->start();
 }
 
 void AddressbookService::stop(void)
 {
 	TRACE("Stopping service...");
-    msgHandler->stop();
+    for(DtsMessageHandler* handler : msgHandlers)
+    {
+    	handler->stop();
+    }
 }
 
 void AddressbookService::wait(void)
 {
-	msgHandler->wait();
+	serverThread->join();
+}
+
+void AddressbookService::onMsgHandlerDisconnected(DtsMessageHandler* handler)
+{
+	TRACE("Client disconnected");
+	if(msgHandlers.find(handler) != msgHandlers.end())
+	{
+		msgHandlers.erase(handler);
+	}
 }

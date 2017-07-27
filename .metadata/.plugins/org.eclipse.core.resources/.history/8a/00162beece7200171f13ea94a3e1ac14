@@ -1,0 +1,44 @@
+#ifndef SRPC_MESSAGE_HANLDER_H
+#define SRPC_MESSAGE_HANLDER_H
+
+#include "dts.pb.h"
+#include "srpc_message.h"
+#include "srpc_utils.h"
+
+#include <vector>
+#include <thread>
+#include <string>
+
+using std::vector;
+using std::string;
+using std::unique_ptr;
+using std::thread;
+using google::protobuf::Message;
+using dts::types::DtsMessageHeader;
+
+class SprcMessageHandler
+{
+public:
+	SprcMessageHandler(string name, int fd);
+    virtual ~SprcMessageHandler(){}
+    void writeMessage(Message& message);
+    void writeDtsMessage(SrpcMessage& message);
+    Message& getMessage(Message& message, char* data, size_t size);
+    Message& readMessage(Message& message);
+    void start();
+    void stop();
+    void wait();
+    virtual void onData(DtsMessageHeader& msgHdr) = 0;
+    virtual void onDisconnection(void) = 0;
+    void messageLoop();
+    template<typename T>
+    void addMessage(T& message);
+    void traceMessage(string tag, Message& message);
+
+private:
+    int fd;
+    string name;
+    std::thread* messageLoopThread;
+};
+
+#endif // SRPC_MESSAGE_HANLDER_H

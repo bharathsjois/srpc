@@ -41,3 +41,9 @@ void AddressbookClientMsgHandler::onData(DtsMessageHeader &msgHdr)
 		}
     }
 }
+
+void AddressbookClientMsgHandler::onDisconnection(DtsMessageHandler* handler)
+{
+	TRACE("Server disconnected");
+	cb->onServerDisconnection();
+}

@@ -13,6 +13,7 @@ class AddressbookServiceMsgHandler : public DtsMessageHandler
 public:
     AddressbookServiceMsgHandler(int fd, AddressbookServiceIF *cb);
     void onData(DtsMessageHeader& msgHdr);
+    void onDisconnection(DtsMessageHandler* handler);
     AddressbookServiceIF* cb;
 };
 

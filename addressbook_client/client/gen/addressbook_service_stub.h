@@ -28,6 +28,7 @@ public:
     void connectToServer(std::string host, int port);
     void start(void);
     void stop(void);
+    void onServerDisconnection(void);
 
     /*
      * Method stubs

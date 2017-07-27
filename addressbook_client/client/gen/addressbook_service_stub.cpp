@@ -123,3 +123,8 @@ void AddressbookServiceStub::addNumber(string name, string number)
     msgHandler->writeDtsMessage(dtsMsg);
 }
 
+void AddressbookServiceStub::onServerDisconnection(void)
+{
+	TRACE("Server disconnected");
+}
+
