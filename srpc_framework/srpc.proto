@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package dts.types;
+package srpc.types;
 
-message DtsMessageHeader {
+message SrpcMessageHeader {
     enum MessageType {
         UNKNOWN = 0;
         METHOD = 1;
@@ -21,10 +21,10 @@ message DtsMessageHeader {
     MessageNature nature = 4; // Synchronous? Asynchronous?
 }
 
-message DtsString {
+message SrpcString {
     string string = 1;
 }
 
-message DtsStringList {
+message SrpcStringList {
     repeated string string = 1;
 }

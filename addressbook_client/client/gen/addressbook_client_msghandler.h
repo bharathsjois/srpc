@@ -1,15 +1,15 @@
 #ifndef ADDRESSBOOK_CLIENT_MSGHANDLER_H
 #define ADDRESSBOOK_CLIENT_MSGHANDLER_H
 
-#include "dts_messagehandler.h"
+#include "srpc_messagehandler.h"
 #include "addressbook_client_callback_if.h"
 
-class AddressbookClientMsgHandler : public DtsMessageHandler
+class AddressbookClientMsgHandler : public SrpcMessageHandler
 {
 public:
     AddressbookClientMsgHandler(int fd, AddressbookClientCallbackIF *cb);
-    void onData(DtsMessageHeader &msgHdr);
-    void onDisconnection(DtsMessageHandler* handler);
+    void onData(SrpcMessageHeader &msgHdr);
+    void onDisconnection(SrpcMessageHandler* handler);
 private:
     AddressbookClientCallbackIF* cb;
 };

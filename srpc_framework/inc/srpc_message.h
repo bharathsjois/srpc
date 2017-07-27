@@ -1,18 +1,18 @@
-#ifndef DTS_MESSAGE_H
-#define DTS_MESSAGE_H
+#ifndef SRPC_MESSAGE_H
+#define SRPC_MESSAGE_H
 
+#include "srpc_message.h"
 #include <vector>
-#include "dts_message.h"
-#include "dts.pb.h"
+#include "srpc.pb.h"
 
 using google::protobuf::Message;
 using std::vector;
 using std::unique_ptr;
 
-class DtsMessage
+class SrpcMessage
 {
 public:
-    DtsMessage(int type, int mid, int rid, int nature);
+	SrpcMessage(int type, int mid, int rid, int nature);
     template<typename T>
     void addMessage(T& message)
     {
@@ -24,4 +24,4 @@ private:
     vector<unique_ptr<Message>> messages;
 };
 
-#endif // DTS_MESSAGE_H
+#endif // SRPC_MESSAGE_H

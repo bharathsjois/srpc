@@ -1,19 +1,19 @@
 #ifndef ADDRESSBOOK_SRV_MSGHANDLER_H
 #define ADDRESSBOOK_SRV_MSGHANDLER_H
 
-#include "dts_messagehandler.h"
-#include "dts.pb.h"
+#include "srpc_messagehandler.h"
+#include "srpc.pb.h"
 
 #include "addressbook_service_if.h"
 
-using dts::types::DtsMessageHeader;
+using srpc::types::SrpcMessageHeader;
 
-class AddressbookServiceMsgHandler : public DtsMessageHandler
+class AddressbookServiceMsgHandler : public SrpcMessageHandler
 {
 public:
     AddressbookServiceMsgHandler(int fd, AddressbookServiceIF *cb);
-    void onData(DtsMessageHeader& msgHdr);
-    void onDisconnection(DtsMessageHandler* handler);
+    void onData(SrpcMessageHeader& msgHdr);
+    void onDisconnection(SrpcMessageHandler* handler);
     AddressbookServiceIF* cb;
 };
 

@@ -16,14 +16,14 @@ public:
     void start(void);
     void stop(void);
     void wait(void);
-    void onMsgHandlerDisconnected(DtsMessageHandler* handler);
+    void onMsgHandlerDisconnected(SrpcMessageHandler* handler);
     ~AddressbookService();
 private:
 
     void startServer(std::string host, int port);
 
     int fd;
-    std::set<DtsMessageHandler*> msgHandlers;
+    std::set<SrpcMessageHandler*> msgHandlers;
     std::thread* serverThread;
 };
 

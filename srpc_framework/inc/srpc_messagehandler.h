@@ -1,8 +1,8 @@
-#ifndef DTS_MESSAGE_HANLDER_H
-#define DTS_MESSAGE_HANLDER_H
+#ifndef SRPC_MESSAGEHANLDER_H
+#define SRPC_MESSAGEHANLDER_H
 
-#include "dts.pb.h"
-#include "dts_message.h"
+#include "srpc_message.h"
+#include "srpc.pb.h"
 #include "srpc_utils.h"
 
 #include <vector>
@@ -14,22 +14,22 @@ using std::string;
 using std::unique_ptr;
 using std::thread;
 using google::protobuf::Message;
-using dts::types::DtsMessageHeader;
+using srpc::types::SrpcMessageHeader;
 
-class DtsMessageHandler
+class SrpcMessageHandler
 {
 public:
-	DtsMessageHandler(string name, int fd);
-    virtual ~DtsMessageHandler(){}
+	SrpcMessageHandler(string name, int fd);
+    virtual ~SrpcMessageHandler(){}
     void writeMessage(Message& message);
-    void writeDtsMessage(DtsMessage& message);
+    void writeSrpcMessage(SrpcMessage& message);
     Message& getMessage(Message& message, char* data, size_t size);
     Message& readMessage(Message& message);
     void start();
     void stop();
     void wait();
-    virtual void onData(DtsMessageHeader& msgHdr) = 0;
-    virtual void onDisconnection(DtsMessageHandler* handler) = 0;
+    virtual void onData(SrpcMessageHeader& msgHdr) = 0;
+    virtual void onDisconnection(SrpcMessageHandler* handler) = 0;
     void messageLoop();
     template<typename T>
     void addMessage(T& message);
@@ -41,4 +41,4 @@ private:
     std::thread* messageLoopThread;
 };
 
-#endif // DTS_MESSAGE_HANLDER_H
+#endif // SRPC_MESSAGEHANLDER_H

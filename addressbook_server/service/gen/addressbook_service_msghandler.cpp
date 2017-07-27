@@ -5,12 +5,12 @@
 
 using std::cout;
 using std::endl;
-using dts::types::DtsString;
+using srpc::types::SrpcString;
 
-using dts::types::DtsMessageHeader;
-using dts::types::DtsMessageHeader_MessageNature;
-using dts::types::DtsMessageHeader_MessageNature_SYNC;
-using dts::types::DtsMessageHeader_MessageType_RESULT;
+using srpc::types::SrpcMessageHeader;
+using srpc::types::SrpcMessageHeader_MessageNature;
+using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
+using srpc::types::SrpcMessageHeader_MessageType_RESULT;
 
 
 #define MID_ADDRESSBOOK_GET 1
@@ -19,37 +19,37 @@ using dts::types::DtsMessageHeader_MessageType_RESULT;
 #define MID_ADDRESSBOOK_ADD_NUMBER 4
 
 AddressbookServiceMsgHandler::AddressbookServiceMsgHandler(int fd, AddressbookServiceIF *cb) :
-    DtsMessageHandler("AddressBookServer", fd)
+    SrpcMessageHandler("AddressBookServer", fd)
 {
     this->cb = cb;
 }
 
-void AddressbookServiceMsgHandler::onData(DtsMessageHeader &msgHdr)
+void AddressbookServiceMsgHandler::onData(SrpcMessageHeader &msgHdr)
 {
     switch(msgHdr.mid()) {
 
 		case MID_ADDRESSBOOK_GET:
 		{
 			addressbook::AddressBook addressBook = cb->getContactList();
-			DtsMessage dtsMsg(DtsMessageHeader_MessageType_RESULT,
+			SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_RESULT,
 							  MID_ADDRESSBOOK_GET,
 							  1,
-							  DtsMessageHeader_MessageNature_SYNC);
-			dtsMsg.addMessage(addressBook);
-			writeDtsMessage(dtsMsg);
+							  SrpcMessageHeader_MessageNature_SYNC);
+			srpcMsg.addMessage(addressBook);
+			writeSrpcMessage(srpcMsg);
 			break;
 		}
 		case MID_ADDRESSBOOK_GET_NUMBERS:
 		{
-			DtsMessage dtsMsg(DtsMessageHeader_MessageType_RESULT,
+			SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_RESULT,
 							  MID_ADDRESSBOOK_GET_NUMBERS,
 							  1,
-							  DtsMessageHeader_MessageNature_SYNC);
-			DtsString name;
+							  SrpcMessageHeader_MessageNature_SYNC);
+			SrpcString name;
 			readMessage(name);
 			addressbook::PhoneNumberList numbers = cb->getNumbers(name.string());
-			dtsMsg.addMessage(numbers);
-			writeDtsMessage(dtsMsg);
+			srpcMsg.addMessage(numbers);
+			writeSrpcMessage(srpcMsg);
 			break;
 		}
 		case MID_ADDRESSBOOK_ADD_PERSON:
@@ -61,7 +61,7 @@ void AddressbookServiceMsgHandler::onData(DtsMessageHeader &msgHdr)
 		}
 		case MID_ADDRESSBOOK_ADD_NUMBER:
 		{
-			DtsString name, number;
+			SrpcString name, number;
 			readMessage(name);
 			readMessage(number);
 			cb->addNumber(name.string(), number.string());
@@ -75,7 +75,7 @@ void AddressbookServiceMsgHandler::onData(DtsMessageHeader &msgHdr)
     }
 }
 
-void AddressbookServiceMsgHandler::onDisconnection(DtsMessageHandler* handler)
+void AddressbookServiceMsgHandler::onDisconnection(SrpcMessageHandler* handler)
 {
 	cb->onMsgHandlerDisconnected(this);
 }

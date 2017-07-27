@@ -20,7 +20,7 @@ AddressbookService::AddressbookService(std::string host, int port)
 
 AddressbookService::~AddressbookService()
 {
-    for(DtsMessageHandler* handler : msgHandlers)
+    for(SrpcMessageHandler* handler : msgHandlers)
     {
     	delete handler;
     }
@@ -79,7 +79,7 @@ void AddressbookService::start(void)
 void AddressbookService::stop(void)
 {
 	TRACE("Stopping service...");
-    for(DtsMessageHandler* handler : msgHandlers)
+    for(SrpcMessageHandler* handler : msgHandlers)
     {
     	handler->stop();
     }
@@ -90,7 +90,7 @@ void AddressbookService::wait(void)
 	serverThread->join();
 }
 
-void AddressbookService::onMsgHandlerDisconnected(DtsMessageHandler* handler)
+void AddressbookService::onMsgHandlerDisconnected(SrpcMessageHandler* handler)
 {
 	TRACE("Client disconnected");
 	if(msgHandlers.find(handler) != msgHandlers.end())

@@ -1,5 +1,5 @@
-#include "dts_messagehandler.h"
-#include "dts.pb.h"
+#include "srpc_messagehandler.h"
+#include "srpc.pb.h"
 
 #include <unistd.h>
 #include <stdexcept>
@@ -9,26 +9,26 @@
 using std::logic_error;
 using std::exception;
 using std::endl;
-using dts::types::DtsString;
+using srpc::types::SrpcString;
 
-void messageLoop(DtsMessageHandler* messageHandler)
+void messageLoop(SrpcMessageHandler* messageHandler)
 {
     messageHandler->messageLoop();
 }
 
-DtsMessageHandler::DtsMessageHandler(string name, int fd)
+SrpcMessageHandler::SrpcMessageHandler(string name, int fd)
 {
     this->name = name;
     this->fd = fd;
     this->messageLoopThread = nullptr;
 }
 
-void DtsMessageHandler::traceMessage(std::string tag, Message& message)
+void SrpcMessageHandler::traceMessage(std::string tag, Message& message)
 {
 	TRACE_DEBUG("From %s: %s %s", name.c_str(), tag.c_str(), message.ShortDebugString().c_str());
 }
 
-void DtsMessageHandler::writeMessage(Message& message)
+void SrpcMessageHandler::writeMessage(Message& message)
 {
     size_t size = message.ByteSizeLong();
     write(fd, &size, sizeof(size));
@@ -36,7 +36,7 @@ void DtsMessageHandler::writeMessage(Message& message)
     traceMessage("Wrote", message);
 }
 
-Message& DtsMessageHandler::getMessage(Message& message, char* data, size_t size)
+Message& SrpcMessageHandler::getMessage(Message& message, char* data, size_t size)
 {
     bool ok = false;
     if(size) {
@@ -52,7 +52,7 @@ Message& DtsMessageHandler::getMessage(Message& message, char* data, size_t size
     return message;
 }
 
-void DtsMessageHandler::writeDtsMessage(DtsMessage& message)
+void SrpcMessageHandler::writeSrpcMessage(SrpcMessage& message)
 {
     vector<unique_ptr<Message>>& messages = message.getMessages();
     for(unique_ptr<Message>& msg : messages) {
@@ -60,7 +60,7 @@ void DtsMessageHandler::writeDtsMessage(DtsMessage& message)
     }
 }
 
-Message& DtsMessageHandler::readMessage(Message& message)
+Message& SrpcMessageHandler::readMessage(Message& message)
 {
     size_t size = 0;
     char* data = NULL;
@@ -74,12 +74,12 @@ Message& DtsMessageHandler::readMessage(Message& message)
     return message;
 }
 
-void DtsMessageHandler::messageLoop(void)
+void SrpcMessageHandler::messageLoop(void)
 {
 	TRACE_DEBUG("Starting message loop");
     while(1) {
         try {
-            DtsMessageHeader msgHdr;
+            SrpcMessageHeader msgHdr;
             readMessage(msgHdr);
             onData(msgHdr);
         }catch(exception& e) {
@@ -90,12 +90,12 @@ void DtsMessageHandler::messageLoop(void)
     }
 }
 
-void DtsMessageHandler::start()
+void SrpcMessageHandler::start()
 {
     messageLoopThread = new std::thread(::messageLoop, this);
 }
 
-void DtsMessageHandler::stop()
+void SrpcMessageHandler::stop()
 {
 	TRACE_DEBUG("%s", __func__);
     close(fd);
@@ -103,7 +103,7 @@ void DtsMessageHandler::stop()
     delete messageLoopThread;
 }
 
-void DtsMessageHandler::wait()
+void SrpcMessageHandler::wait()
 {
 	messageLoopThread->join();
 }

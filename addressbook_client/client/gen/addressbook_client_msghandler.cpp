@@ -1,6 +1,6 @@
 #include "addressbook_client_msghandler.h"
 #include "addressbook.pb.h"
-#include "dts.pb.h"
+#include "srpc.pb.h"
 
 #include <iostream>
 
@@ -12,12 +12,12 @@ using std::endl;
 #define MID_ADDRESSBOOK_ADD_PERSON 3
 #define MID_ADDRESSBOOK_ADD_NUMBER 4
 
-AddressbookClientMsgHandler::AddressbookClientMsgHandler(int fd, AddressbookClientCallbackIF* cb) : DtsMessageHandler("AddressbookClient", fd)
+AddressbookClientMsgHandler::AddressbookClientMsgHandler(int fd, AddressbookClientCallbackIF* cb) : SrpcMessageHandler("AddressbookClient", fd)
 {
     this->cb = cb;
 }
 
-void AddressbookClientMsgHandler::onData(DtsMessageHeader &msgHdr)
+void AddressbookClientMsgHandler::onData(SrpcMessageHeader& msgHdr)
 {
     switch(msgHdr.mid()) {
 		case MID_ADDRESSBOOK_GET:
@@ -42,7 +42,7 @@ void AddressbookClientMsgHandler::onData(DtsMessageHeader &msgHdr)
     }
 }
 
-void AddressbookClientMsgHandler::onDisconnection(DtsMessageHandler* handler)
+void AddressbookClientMsgHandler::onDisconnection(SrpcMessageHandler* handler)
 {
 	TRACE("Server disconnected");
 	cb->onServerDisconnection();

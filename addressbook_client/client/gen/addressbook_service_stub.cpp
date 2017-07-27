@@ -1,6 +1,6 @@
+#include "srpc_message.h"
 #include "addressbook_service_stub.h"
-#include "dts_message.h"
-#include "dts.pb.h"
+#include "srpc.pb.h"
 #include "addressbook.pb.h"
 
 #include <fcntl.h>
@@ -8,9 +8,9 @@
 #include <netdb.h>
 #include <netinet/in.h>
 
-using dts::types::DtsMessageHeader_MessageNature_SYNC;
-using dts::types::DtsMessageHeader_MessageType_METHOD;
-using dts::types::DtsString;
+using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
+using srpc::types::SrpcMessageHeader_MessageType_METHOD;
+using srpc::types::SrpcString;
 
 using std::logic_error;
 using std::endl;
@@ -70,10 +70,10 @@ void AddressbookServiceStub::stop(void)
 
 addressbook::AddressBook AddressbookServiceStub::getContactList()
 {
-    DtsMessage dtsMsg(DtsMessageHeader_MessageType_METHOD,
+    SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_METHOD,
                       MID_ADDRESSBOOK_GET, requestId++,
-                      DtsMessageHeader_MessageNature_SYNC);
-    msgHandler->writeDtsMessage(dtsMsg);
+                      SrpcMessageHeader_MessageNature_SYNC);
+    msgHandler->writeSrpcMessage(srpcMsg);
 
     return book_promise.get_future().get();
 }
@@ -85,13 +85,13 @@ void AddressbookServiceStub::onGetAddressbookResult(addressbook::AddressBook& bo
 
 addressbook::PhoneNumberList AddressbookServiceStub::getNumbers(string name)
 {
-    DtsMessage dtsMsg(DtsMessageHeader_MessageType_METHOD,
+    SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_METHOD,
                       MID_ADDRESSBOOK_GET_NUMBERS, requestId++,
-                      DtsMessageHeader_MessageNature_SYNC);
-    DtsString dts_name;
-    dts_name.set_string(name);
-    dtsMsg.addMessage(dts_name);
-    msgHandler->writeDtsMessage(dtsMsg);
+                      SrpcMessageHeader_MessageNature_SYNC);
+    SrpcString srpc_name;
+    srpc_name.set_string(name);
+    srpcMsg.addMessage(srpc_name);
+    msgHandler->writeSrpcMessage(srpcMsg);
     return numbers_promise.get_future().get();
 }
 
@@ -102,25 +102,25 @@ void AddressbookServiceStub::onGetNumbersResult(addressbook::PhoneNumberList& nu
 
 void AddressbookServiceStub::addContact(addressbook::Contact contact)
 {
-    DtsMessage dtsMsg(DtsMessageHeader_MessageType_METHOD,
+    SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_METHOD,
                       MID_ADDRESSBOOK_ADD_PERSON, requestId++,
-                      DtsMessageHeader_MessageNature_SYNC);
-    dtsMsg.addMessage(contact);
-    msgHandler->writeDtsMessage(dtsMsg);
+                      SrpcMessageHeader_MessageNature_SYNC);
+    srpcMsg.addMessage(contact);
+    msgHandler->writeSrpcMessage(srpcMsg);
 }
 
 void AddressbookServiceStub::addNumber(string name, string number)
 {
-    DtsMessage dtsMsg(DtsMessageHeader_MessageType_METHOD,
+    SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_METHOD,
                       MID_ADDRESSBOOK_ADD_NUMBER, requestId++,
-                      DtsMessageHeader_MessageNature_SYNC);
+                      SrpcMessageHeader_MessageNature_SYNC);
 
-    DtsString dts_name, dts_number;
-    dts_name.set_string(name);
-    dts_number.set_string(number);
-    dtsMsg.addMessage(dts_name);
-    dtsMsg.addMessage(dts_number);
-    msgHandler->writeDtsMessage(dtsMsg);
+    SrpcString srpc_name, srpc_number;
+    srpc_name.set_string(name);
+    srpc_number.set_string(number);
+    srpcMsg.addMessage(srpc_name);
+    srpcMsg.addMessage(srpc_number);
+    msgHandler->writeSrpcMessage(srpcMsg);
 }
 
 void AddressbookServiceStub::onServerDisconnection(void)

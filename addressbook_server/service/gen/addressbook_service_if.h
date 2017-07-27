@@ -11,7 +11,7 @@ public:
     virtual addressbook::PhoneNumberList getNumbers(std::string name) = 0;
     virtual void addContact(addressbook::Contact contact) = 0;
     virtual void addNumber(std::string name, std::string number) = 0;
-    virtual void onMsgHandlerDisconnected(DtsMessageHandler* handler) = 0;
+    virtual void onMsgHandlerDisconnected(SrpcMessageHandler* handler) = 0;
     virtual ~AddressbookServiceIF(){}
 };
 
