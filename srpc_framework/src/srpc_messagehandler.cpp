@@ -9,7 +9,6 @@
 using std::logic_error;
 using std::exception;
 using std::endl;
-using srpc::types::SrpcString;
 
 namespace srpc
 {

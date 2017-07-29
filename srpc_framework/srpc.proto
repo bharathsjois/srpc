@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+
 package srpc.types;
 
 message SrpcMessageHeader {
@@ -19,12 +21,4 @@ message SrpcMessageHeader {
         ASYNC = 2;
     }
     MessageNature nature = 4; // Synchronous? Asynchronous?
-}
-
-message SrpcString {
-    string string = 1;
-}
-
-message SrpcStringList {
-    repeated string string = 1;
 }

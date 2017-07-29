@@ -21,17 +21,13 @@ namespace srpc {
 namespace types {
 class SrpcMessageHeaderDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SrpcMessageHeader> {
 } _SrpcMessageHeader_default_instance_;
-class SrpcStringDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SrpcString> {
-} _SrpcString_default_instance_;
-class SrpcStringListDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SrpcStringList> {
-} _SrpcStringList_default_instance_;
 
 namespace protobuf_srpc_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[3];
+::google::protobuf::Metadata file_level_metadata[1];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 }  // namespace
@@ -45,28 +41,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcMessageHeader, mid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcMessageHeader, rid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcMessageHeader, nature_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcString, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcString, string_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcStringList, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SrpcStringList, string_),
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 0, -1, sizeof(SrpcMessageHeader)},
-  { 8, -1, sizeof(SrpcString)},
-  { 13, -1, sizeof(SrpcStringList)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_SrpcMessageHeader_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_SrpcString_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_SrpcStringList_default_instance_),
 };
 
 namespace {
@@ -87,7 +69,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
 }
 
 }  // namespace
@@ -95,19 +77,14 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void TableStruct::Shutdown() {
   _SrpcMessageHeader_default_instance_.Shutdown();
   delete file_level_metadata[0].reflection;
-  _SrpcString_default_instance_.Shutdown();
-  delete file_level_metadata[1].reflection;
-  _SrpcStringList_default_instance_.Shutdown();
-  delete file_level_metadata[2].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
+  ::google::protobuf::protobuf_google_2fprotobuf_2fwrappers_2eproto::InitDefaults();
   _SrpcMessageHeader_default_instance_.DefaultConstruct();
-  _SrpcString_default_instance_.DefaultConstruct();
-  _SrpcStringList_default_instance_.DefaultConstruct();
 }
 
 void InitDefaults() {
@@ -117,21 +94,21 @@ void InitDefaults() {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
-      "\n\nsrpc.proto\022\nsrpc.types\"\226\002\n\021SrpcMessage"
-      "Header\0227\n\004type\030\001 \001(\0162).srpc.types.SrpcMe"
-      "ssageHeader.MessageType\022\013\n\003mid\030\002 \001(\005\022\013\n\003"
-      "rid\030\003 \001(\005\022;\n\006nature\030\004 \001(\0162+.srpc.types.S"
-      "rpcMessageHeader.MessageNature\">\n\013Messag"
-      "eType\022\013\n\007UNKNOWN\020\000\022\n\n\006METHOD\020\001\022\n\n\006RESULT"
-      "\020\002\022\n\n\006SIGNAL\020\003\"1\n\rMessageNature\022\013\n\007DEFAU"
-      "LT\020\000\022\010\n\004SYNC\020\001\022\t\n\005ASYNC\020\002\"\034\n\nSrpcString\022"
-      "\016\n\006string\030\001 \001(\t\" \n\016SrpcStringList\022\016\n\006str"
-      "ing\030\001 \003(\tb\006proto3"
+      "\n\nsrpc.proto\022\nsrpc.types\032\036google/protobu"
+      "f/wrappers.proto\"\226\002\n\021SrpcMessageHeader\0227"
+      "\n\004type\030\001 \001(\0162).srpc.types.SrpcMessageHea"
+      "der.MessageType\022\013\n\003mid\030\002 \001(\005\022\013\n\003rid\030\003 \001("
+      "\005\022;\n\006nature\030\004 \001(\0162+.srpc.types.SrpcMessa"
+      "geHeader.MessageNature\">\n\013MessageType\022\013\n"
+      "\007UNKNOWN\020\000\022\n\n\006METHOD\020\001\022\n\n\006RESULT\020\002\022\n\n\006SI"
+      "GNAL\020\003\"1\n\rMessageNature\022\013\n\007DEFAULT\020\000\022\010\n\004"
+      "SYNC\020\001\022\t\n\005ASYNC\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 377);
+      descriptor, 345);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "srpc.proto", &protobuf_RegisterTypes);
+  ::google::protobuf::protobuf_google_2fprotobuf_2fwrappers_2eproto::AddDescriptors();
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
 }
 
@@ -577,578 +554,6 @@ void SrpcMessageHeader::set_nature(::srpc::types::SrpcMessageHeader_MessageNatur
   
   nature_ = value;
   // @@protoc_insertion_point(field_set:srpc.types.SrpcMessageHeader.nature)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SrpcString::kStringFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-SrpcString::SrpcString()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_srpc_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:srpc.types.SrpcString)
-}
-SrpcString::SrpcString(const SrpcString& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.string().size() > 0) {
-    string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.string_);
-  }
-  // @@protoc_insertion_point(copy_constructor:srpc.types.SrpcString)
-}
-
-void SrpcString::SharedCtor() {
-  string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _cached_size_ = 0;
-}
-
-SrpcString::~SrpcString() {
-  // @@protoc_insertion_point(destructor:srpc.types.SrpcString)
-  SharedDtor();
-}
-
-void SrpcString::SharedDtor() {
-  string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void SrpcString::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* SrpcString::descriptor() {
-  protobuf_srpc_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_srpc_2eproto::file_level_metadata[1].descriptor;
-}
-
-const SrpcString& SrpcString::default_instance() {
-  protobuf_srpc_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-SrpcString* SrpcString::New(::google::protobuf::Arena* arena) const {
-  SrpcString* n = new SrpcString;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void SrpcString::Clear() {
-// @@protoc_insertion_point(message_clear_start:srpc.types.SrpcString)
-  string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-bool SrpcString::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:srpc.types.SrpcString)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string string = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_string()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->string().data(), this->string().length(),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "srpc.types.SrpcString.string"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:srpc.types.SrpcString)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:srpc.types.SrpcString)
-  return false;
-#undef DO_
-}
-
-void SrpcString::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:srpc.types.SrpcString)
-  // string string = 1;
-  if (this->string().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->string().data(), this->string().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "srpc.types.SrpcString.string");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->string(), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:srpc.types.SrpcString)
-}
-
-::google::protobuf::uint8* SrpcString::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:srpc.types.SrpcString)
-  // string string = 1;
-  if (this->string().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->string().data(), this->string().length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "srpc.types.SrpcString.string");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->string(), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:srpc.types.SrpcString)
-  return target;
-}
-
-size_t SrpcString::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:srpc.types.SrpcString)
-  size_t total_size = 0;
-
-  // string string = 1;
-  if (this->string().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->string());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void SrpcString::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:srpc.types.SrpcString)
-  GOOGLE_DCHECK_NE(&from, this);
-  const SrpcString* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SrpcString>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:srpc.types.SrpcString)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:srpc.types.SrpcString)
-    MergeFrom(*source);
-  }
-}
-
-void SrpcString::MergeFrom(const SrpcString& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:srpc.types.SrpcString)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.string().size() > 0) {
-
-    string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.string_);
-  }
-}
-
-void SrpcString::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:srpc.types.SrpcString)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void SrpcString::CopyFrom(const SrpcString& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:srpc.types.SrpcString)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool SrpcString::IsInitialized() const {
-  return true;
-}
-
-void SrpcString::Swap(SrpcString* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void SrpcString::InternalSwap(SrpcString* other) {
-  string_.Swap(&other->string_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata SrpcString::GetMetadata() const {
-  protobuf_srpc_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_srpc_2eproto::file_level_metadata[1];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// SrpcString
-
-// string string = 1;
-void SrpcString::clear_string() {
-  string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-const ::std::string& SrpcString::string() const {
-  // @@protoc_insertion_point(field_get:srpc.types.SrpcString.string)
-  return string_.GetNoArena();
-}
-void SrpcString::set_string(const ::std::string& value) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcString.string)
-}
-#if LANG_CXX11
-void SrpcString::set_string(::std::string&& value) {
-  
-  string_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:srpc.types.SrpcString.string)
-}
-#endif
-void SrpcString::set_string(const char* value) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:srpc.types.SrpcString.string)
-}
-void SrpcString::set_string(const char* value, size_t size) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:srpc.types.SrpcString.string)
-}
-::std::string* SrpcString::mutable_string() {
-  
-  // @@protoc_insertion_point(field_mutable:srpc.types.SrpcString.string)
-  return string_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-::std::string* SrpcString::release_string() {
-  // @@protoc_insertion_point(field_release:srpc.types.SrpcString.string)
-  
-  return string_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void SrpcString::set_allocated_string(::std::string* string) {
-  if (string != NULL) {
-    
-  } else {
-    
-  }
-  string_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), string);
-  // @@protoc_insertion_point(field_set_allocated:srpc.types.SrpcString.string)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SrpcStringList::kStringFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-SrpcStringList::SrpcStringList()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    protobuf_srpc_2eproto::InitDefaults();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:srpc.types.SrpcStringList)
-}
-SrpcStringList::SrpcStringList(const SrpcStringList& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      string_(from.string_),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:srpc.types.SrpcStringList)
-}
-
-void SrpcStringList::SharedCtor() {
-  _cached_size_ = 0;
-}
-
-SrpcStringList::~SrpcStringList() {
-  // @@protoc_insertion_point(destructor:srpc.types.SrpcStringList)
-  SharedDtor();
-}
-
-void SrpcStringList::SharedDtor() {
-}
-
-void SrpcStringList::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* SrpcStringList::descriptor() {
-  protobuf_srpc_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_srpc_2eproto::file_level_metadata[2].descriptor;
-}
-
-const SrpcStringList& SrpcStringList::default_instance() {
-  protobuf_srpc_2eproto::InitDefaults();
-  return *internal_default_instance();
-}
-
-SrpcStringList* SrpcStringList::New(::google::protobuf::Arena* arena) const {
-  SrpcStringList* n = new SrpcStringList;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void SrpcStringList::Clear() {
-// @@protoc_insertion_point(message_clear_start:srpc.types.SrpcStringList)
-  string_.Clear();
-}
-
-bool SrpcStringList::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:srpc.types.SrpcStringList)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated string string = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_string()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->string(this->string_size() - 1).data(),
-            this->string(this->string_size() - 1).length(),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "srpc.types.SrpcStringList.string"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:srpc.types.SrpcStringList)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:srpc.types.SrpcStringList)
-  return false;
-#undef DO_
-}
-
-void SrpcStringList::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:srpc.types.SrpcStringList)
-  // repeated string string = 1;
-  for (int i = 0, n = this->string_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->string(i).data(), this->string(i).length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "srpc.types.SrpcStringList.string");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->string(i), output);
-  }
-
-  // @@protoc_insertion_point(serialize_end:srpc.types.SrpcStringList)
-}
-
-::google::protobuf::uint8* SrpcStringList::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:srpc.types.SrpcStringList)
-  // repeated string string = 1;
-  for (int i = 0, n = this->string_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->string(i).data(), this->string(i).length(),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "srpc.types.SrpcStringList.string");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(1, this->string(i), target);
-  }
-
-  // @@protoc_insertion_point(serialize_to_array_end:srpc.types.SrpcStringList)
-  return target;
-}
-
-size_t SrpcStringList::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:srpc.types.SrpcStringList)
-  size_t total_size = 0;
-
-  // repeated string string = 1;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->string_size());
-  for (int i = 0, n = this->string_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->string(i));
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void SrpcStringList::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:srpc.types.SrpcStringList)
-  GOOGLE_DCHECK_NE(&from, this);
-  const SrpcStringList* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SrpcStringList>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:srpc.types.SrpcStringList)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:srpc.types.SrpcStringList)
-    MergeFrom(*source);
-  }
-}
-
-void SrpcStringList::MergeFrom(const SrpcStringList& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:srpc.types.SrpcStringList)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  string_.MergeFrom(from.string_);
-}
-
-void SrpcStringList::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:srpc.types.SrpcStringList)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void SrpcStringList::CopyFrom(const SrpcStringList& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:srpc.types.SrpcStringList)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool SrpcStringList::IsInitialized() const {
-  return true;
-}
-
-void SrpcStringList::Swap(SrpcStringList* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void SrpcStringList::InternalSwap(SrpcStringList* other) {
-  string_.UnsafeArenaSwap(&other->string_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata SrpcStringList::GetMetadata() const {
-  protobuf_srpc_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_srpc_2eproto::file_level_metadata[2];
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// SrpcStringList
-
-// repeated string string = 1;
-int SrpcStringList::string_size() const {
-  return string_.size();
-}
-void SrpcStringList::clear_string() {
-  string_.Clear();
-}
-const ::std::string& SrpcStringList::string(int index) const {
-  // @@protoc_insertion_point(field_get:srpc.types.SrpcStringList.string)
-  return string_.Get(index);
-}
-::std::string* SrpcStringList::mutable_string(int index) {
-  // @@protoc_insertion_point(field_mutable:srpc.types.SrpcStringList.string)
-  return string_.Mutable(index);
-}
-void SrpcStringList::set_string(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcStringList.string)
-  string_.Mutable(index)->assign(value);
-}
-#if LANG_CXX11
-void SrpcStringList::set_string(int index, ::std::string&& value) {
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcStringList.string)
-  string_.Mutable(index)->assign(std::move(value));
-}
-#endif
-void SrpcStringList::set_string(int index, const char* value) {
-  string_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:srpc.types.SrpcStringList.string)
-}
-void SrpcStringList::set_string(int index, const char* value, size_t size) {
-  string_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:srpc.types.SrpcStringList.string)
-}
-::std::string* SrpcStringList::add_string() {
-  // @@protoc_insertion_point(field_add_mutable:srpc.types.SrpcStringList.string)
-  return string_.Add();
-}
-void SrpcStringList::add_string(const ::std::string& value) {
-  string_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:srpc.types.SrpcStringList.string)
-}
-#if LANG_CXX11
-void SrpcStringList::add_string(::std::string&& value) {
-  string_.Add()->assign(std::move(value));
-  // @@protoc_insertion_point(field_add:srpc.types.SrpcStringList.string)
-}
-#endif
-void SrpcStringList::add_string(const char* value) {
-  string_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:srpc.types.SrpcStringList.string)
-}
-void SrpcStringList::add_string(const char* value, size_t size) {
-  string_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:srpc.types.SrpcStringList.string)
-}
-const ::google::protobuf::RepeatedPtrField< ::std::string>&
-SrpcStringList::string() const {
-  // @@protoc_insertion_point(field_list:srpc.types.SrpcStringList.string)
-  return string_;
-}
-::google::protobuf::RepeatedPtrField< ::std::string>*
-SrpcStringList::mutable_string() {
-  // @@protoc_insertion_point(field_mutable_list:srpc.types.SrpcStringList.string)
-  return &string_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

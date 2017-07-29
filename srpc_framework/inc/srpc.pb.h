@@ -29,18 +29,44 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/wrappers.pb.h>
 // @@protoc_insertion_point(includes)
+namespace google {
+namespace protobuf {
+class BoolValue;
+class BoolValueDefaultTypeInternal;
+extern BoolValueDefaultTypeInternal _BoolValue_default_instance_;
+class BytesValue;
+class BytesValueDefaultTypeInternal;
+extern BytesValueDefaultTypeInternal _BytesValue_default_instance_;
+class DoubleValue;
+class DoubleValueDefaultTypeInternal;
+extern DoubleValueDefaultTypeInternal _DoubleValue_default_instance_;
+class FloatValue;
+class FloatValueDefaultTypeInternal;
+extern FloatValueDefaultTypeInternal _FloatValue_default_instance_;
+class Int32Value;
+class Int32ValueDefaultTypeInternal;
+extern Int32ValueDefaultTypeInternal _Int32Value_default_instance_;
+class Int64Value;
+class Int64ValueDefaultTypeInternal;
+extern Int64ValueDefaultTypeInternal _Int64Value_default_instance_;
+class StringValue;
+class StringValueDefaultTypeInternal;
+extern StringValueDefaultTypeInternal _StringValue_default_instance_;
+class UInt32Value;
+class UInt32ValueDefaultTypeInternal;
+extern UInt32ValueDefaultTypeInternal _UInt32Value_default_instance_;
+class UInt64Value;
+class UInt64ValueDefaultTypeInternal;
+extern UInt64ValueDefaultTypeInternal _UInt64Value_default_instance_;
+}  // namespace protobuf
+}  // namespace google
 namespace srpc {
 namespace types {
 class SrpcMessageHeader;
 class SrpcMessageHeaderDefaultTypeInternal;
 extern SrpcMessageHeaderDefaultTypeInternal _SrpcMessageHeader_default_instance_;
-class SrpcString;
-class SrpcStringDefaultTypeInternal;
-extern SrpcStringDefaultTypeInternal _SrpcString_default_instance_;
-class SrpcStringList;
-class SrpcStringListDefaultTypeInternal;
-extern SrpcStringListDefaultTypeInternal _SrpcStringList_default_instance_;
 }  // namespace types
 }  // namespace srpc
 
@@ -265,196 +291,6 @@ class SrpcMessageHeader : public ::google::protobuf::Message /* @@protoc_inserti
   mutable int _cached_size_;
   friend struct protobuf_srpc_2eproto::TableStruct;
 };
-// -------------------------------------------------------------------
-
-class SrpcString : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:srpc.types.SrpcString) */ {
- public:
-  SrpcString();
-  virtual ~SrpcString();
-
-  SrpcString(const SrpcString& from);
-
-  inline SrpcString& operator=(const SrpcString& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SrpcString& default_instance();
-
-  static inline const SrpcString* internal_default_instance() {
-    return reinterpret_cast<const SrpcString*>(
-               &_SrpcString_default_instance_);
-  }
-
-  void Swap(SrpcString* other);
-
-  // implements Message ----------------------------------------------
-
-  inline SrpcString* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  SrpcString* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SrpcString& from);
-  void MergeFrom(const SrpcString& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
-      const PROTOBUF_FINAL {
-    return InternalSerializeWithCachedSizesToArray(
-        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
-  }
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SrpcString* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string string = 1;
-  void clear_string();
-  static const int kStringFieldNumber = 1;
-  const ::std::string& string() const;
-  void set_string(const ::std::string& value);
-  #if LANG_CXX11
-  void set_string(::std::string&& value);
-  #endif
-  void set_string(const char* value);
-  void set_string(const char* value, size_t size);
-  ::std::string* mutable_string();
-  ::std::string* release_string();
-  void set_allocated_string(::std::string* string);
-
-  // @@protoc_insertion_point(class_scope:srpc.types.SrpcString)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr string_;
-  mutable int _cached_size_;
-  friend struct protobuf_srpc_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class SrpcStringList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:srpc.types.SrpcStringList) */ {
- public:
-  SrpcStringList();
-  virtual ~SrpcStringList();
-
-  SrpcStringList(const SrpcStringList& from);
-
-  inline SrpcStringList& operator=(const SrpcStringList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SrpcStringList& default_instance();
-
-  static inline const SrpcStringList* internal_default_instance() {
-    return reinterpret_cast<const SrpcStringList*>(
-               &_SrpcStringList_default_instance_);
-  }
-
-  void Swap(SrpcStringList* other);
-
-  // implements Message ----------------------------------------------
-
-  inline SrpcStringList* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  SrpcStringList* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SrpcStringList& from);
-  void MergeFrom(const SrpcStringList& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
-      const PROTOBUF_FINAL {
-    return InternalSerializeWithCachedSizesToArray(
-        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
-  }
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SrpcStringList* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated string string = 1;
-  int string_size() const;
-  void clear_string();
-  static const int kStringFieldNumber = 1;
-  const ::std::string& string(int index) const;
-  ::std::string* mutable_string(int index);
-  void set_string(int index, const ::std::string& value);
-  #if LANG_CXX11
-  void set_string(int index, ::std::string&& value);
-  #endif
-  void set_string(int index, const char* value);
-  void set_string(int index, const char* value, size_t size);
-  ::std::string* add_string();
-  void add_string(const ::std::string& value);
-  #if LANG_CXX11
-  void add_string(::std::string&& value);
-  #endif
-  void add_string(const char* value);
-  void add_string(const char* value, size_t size);
-  const ::google::protobuf::RepeatedPtrField< ::std::string>& string() const;
-  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_string();
-
-  // @@protoc_insertion_point(class_scope:srpc.types.SrpcStringList)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> string_;
-  mutable int _cached_size_;
-  friend struct protobuf_srpc_2eproto::TableStruct;
-};
 // ===================================================================
 
 
@@ -519,138 +355,7 @@ inline void SrpcMessageHeader::set_nature(::srpc::types::SrpcMessageHeader_Messa
   // @@protoc_insertion_point(field_set:srpc.types.SrpcMessageHeader.nature)
 }
 
-// -------------------------------------------------------------------
-
-// SrpcString
-
-// string string = 1;
-inline void SrpcString::clear_string() {
-  string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& SrpcString::string() const {
-  // @@protoc_insertion_point(field_get:srpc.types.SrpcString.string)
-  return string_.GetNoArena();
-}
-inline void SrpcString::set_string(const ::std::string& value) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcString.string)
-}
-#if LANG_CXX11
-inline void SrpcString::set_string(::std::string&& value) {
-  
-  string_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:srpc.types.SrpcString.string)
-}
-#endif
-inline void SrpcString::set_string(const char* value) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:srpc.types.SrpcString.string)
-}
-inline void SrpcString::set_string(const char* value, size_t size) {
-  
-  string_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:srpc.types.SrpcString.string)
-}
-inline ::std::string* SrpcString::mutable_string() {
-  
-  // @@protoc_insertion_point(field_mutable:srpc.types.SrpcString.string)
-  return string_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* SrpcString::release_string() {
-  // @@protoc_insertion_point(field_release:srpc.types.SrpcString.string)
-  
-  return string_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void SrpcString::set_allocated_string(::std::string* string) {
-  if (string != NULL) {
-    
-  } else {
-    
-  }
-  string_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), string);
-  // @@protoc_insertion_point(field_set_allocated:srpc.types.SrpcString.string)
-}
-
-// -------------------------------------------------------------------
-
-// SrpcStringList
-
-// repeated string string = 1;
-inline int SrpcStringList::string_size() const {
-  return string_.size();
-}
-inline void SrpcStringList::clear_string() {
-  string_.Clear();
-}
-inline const ::std::string& SrpcStringList::string(int index) const {
-  // @@protoc_insertion_point(field_get:srpc.types.SrpcStringList.string)
-  return string_.Get(index);
-}
-inline ::std::string* SrpcStringList::mutable_string(int index) {
-  // @@protoc_insertion_point(field_mutable:srpc.types.SrpcStringList.string)
-  return string_.Mutable(index);
-}
-inline void SrpcStringList::set_string(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcStringList.string)
-  string_.Mutable(index)->assign(value);
-}
-#if LANG_CXX11
-inline void SrpcStringList::set_string(int index, ::std::string&& value) {
-  // @@protoc_insertion_point(field_set:srpc.types.SrpcStringList.string)
-  string_.Mutable(index)->assign(std::move(value));
-}
-#endif
-inline void SrpcStringList::set_string(int index, const char* value) {
-  string_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:srpc.types.SrpcStringList.string)
-}
-inline void SrpcStringList::set_string(int index, const char* value, size_t size) {
-  string_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:srpc.types.SrpcStringList.string)
-}
-inline ::std::string* SrpcStringList::add_string() {
-  // @@protoc_insertion_point(field_add_mutable:srpc.types.SrpcStringList.string)
-  return string_.Add();
-}
-inline void SrpcStringList::add_string(const ::std::string& value) {
-  string_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:srpc.types.SrpcStringList.string)
-}
-#if LANG_CXX11
-inline void SrpcStringList::add_string(::std::string&& value) {
-  string_.Add()->assign(std::move(value));
-  // @@protoc_insertion_point(field_add:srpc.types.SrpcStringList.string)
-}
-#endif
-inline void SrpcStringList::add_string(const char* value) {
-  string_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:srpc.types.SrpcStringList.string)
-}
-inline void SrpcStringList::add_string(const char* value, size_t size) {
-  string_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:srpc.types.SrpcStringList.string)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-SrpcStringList::string() const {
-  // @@protoc_insertion_point(field_list:srpc.types.SrpcStringList.string)
-  return string_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-SrpcStringList::mutable_string() {
-  // @@protoc_insertion_point(field_mutable_list:srpc.types.SrpcStringList.string)
-  return &string_;
-}
-
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 

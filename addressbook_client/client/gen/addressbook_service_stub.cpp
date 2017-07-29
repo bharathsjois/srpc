@@ -11,7 +11,7 @@
 using srpc::SrpcMessage;
 using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
 using srpc::types::SrpcMessageHeader_MessageType_METHOD;
-using srpc::types::SrpcString;
+using google::protobuf::StringValue;
 
 using std::logic_error;
 using std::endl;
@@ -89,8 +89,8 @@ addressbook::PhoneNumberList AddressbookServiceStub::getNumbers(string name)
     SrpcMessage srpcMsg(SrpcMessageHeader_MessageType_METHOD,
                       MID_ADDRESSBOOK_GET_NUMBERS, requestId++,
                       SrpcMessageHeader_MessageNature_SYNC);
-    SrpcString srpc_name;
-    srpc_name.set_string(name);
+    StringValue srpc_name;
+    srpc_name.set_value(name);
     srpcMsg.addMessage(srpc_name);
     msgHandler->writeSrpcMessage(srpcMsg);
     return numbers_promise.get_future().get();
@@ -116,9 +116,9 @@ void AddressbookServiceStub::addNumber(string name, string number)
                       MID_ADDRESSBOOK_ADD_NUMBER, requestId++,
                       SrpcMessageHeader_MessageNature_SYNC);
 
-    SrpcString srpc_name, srpc_number;
-    srpc_name.set_string(name);
-    srpc_number.set_string(number);
+    StringValue srpc_name, srpc_number;
+    srpc_name.set_value(name);
+    srpc_number.set_value(number);
     srpcMsg.addMessage(srpc_name);
     srpcMsg.addMessage(srpc_number);
     msgHandler->writeSrpcMessage(srpcMsg);

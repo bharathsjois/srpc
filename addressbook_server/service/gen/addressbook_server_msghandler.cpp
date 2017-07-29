@@ -9,12 +9,12 @@ using std::cout;
 using std::endl;
 
 using srpc::SrpcMessage;
-using srpc::types::SrpcString;
 using srpc::types::SrpcMessageHeader;
 using srpc::types::SrpcMessageHeader_MessageNature;
 using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
 using srpc::types::SrpcMessageHeader_MessageType_RESULT;
 
+using google::protobuf::StringValue;
 
 #define MID_ADDRESSBOOK_GET 1
 #define MID_ADDRESSBOOK_GET_NUMBERS 2
@@ -48,9 +48,9 @@ void AddressbookServerMsgHandler::onData(SrpcMessageHeader &msgHdr)
 							  MID_ADDRESSBOOK_GET_NUMBERS,
 							  1,
 							  SrpcMessageHeader_MessageNature_SYNC);
-			SrpcString name;
+			StringValue name;
 			readMessage(name);
-			addressbook::PhoneNumberList numbers = cb->getNumbers(name.string());
+			addressbook::PhoneNumberList numbers = cb->getNumbers(name.value());
 			srpcMsg.addMessage(numbers);
 			writeSrpcMessage(srpcMsg);
 			break;
@@ -64,10 +64,10 @@ void AddressbookServerMsgHandler::onData(SrpcMessageHeader &msgHdr)
 		}
 		case MID_ADDRESSBOOK_ADD_NUMBER:
 		{
-			SrpcString name, number;
+			StringValue name, number;
 			readMessage(name);
 			readMessage(number);
-			cb->addNumber(name.string(), number.string());
+			cb->addNumber(name.value(), number.value());
 			break;
 		}
 		default:
