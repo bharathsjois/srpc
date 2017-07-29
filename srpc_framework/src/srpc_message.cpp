@@ -5,6 +5,9 @@ using srpc::types::SrpcMessageHeader;
 using srpc::types::SrpcMessageHeader_MessageNature;
 using srpc::types::SrpcMessageHeader_MessageType;
 
+namespace srpc
+{
+
 SrpcMessage::SrpcMessage(int type, int mid, int rid, int nature)
 {
     SrpcMessageHeader msgHdr;
@@ -14,4 +17,5 @@ SrpcMessage::SrpcMessage(int type, int mid, int rid, int nature)
     msgHdr.set_nature((SrpcMessageHeader_MessageNature)nature);
     messages.clear();
     addMessage(msgHdr);
+}
 }

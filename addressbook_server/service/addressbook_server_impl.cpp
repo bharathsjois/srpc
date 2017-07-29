@@ -1,19 +1,20 @@
-#include "addressbook_service_impl.h"
+#include "addressbook_server_impl.h"
 
-AddressBookServiceImpl::AddressBookServiceImpl(std::string host, int port) : AddressbookService(host, port)
+AddressBookServerImpl::AddressBookServerImpl(std::string host, int port) : AddressbookServer(host, port)
 {
 }
 
-AddressBookServiceImpl::~AddressBookServiceImpl()
+AddressBookServerImpl::~AddressBookServerImpl()
 {
+	stop();
 }
 
-addressbook::AddressBook AddressBookServiceImpl::getContactList()
+addressbook::AddressBook AddressBookServerImpl::getContactList()
 {
     return addressBook;
 }
 
-addressbook::PhoneNumberList AddressBookServiceImpl::getNumbers(string name)
+addressbook::PhoneNumberList AddressBookServerImpl::getNumbers(string name)
 {
 	int n = addressBook.contactlist_size();
 	for(int i = 0; i < n; ++i)
@@ -27,12 +28,12 @@ addressbook::PhoneNumberList AddressBookServiceImpl::getNumbers(string name)
     throw std::out_of_range(name);
 }
 
-void AddressBookServiceImpl::addContact(addressbook::Contact contact)
+void AddressBookServerImpl::addContact(addressbook::Contact contact)
 {
     addressBook.add_contactlist()->CopyFrom(contact);
 }
 
-void AddressBookServiceImpl::addNumber(string name, string number)
+void AddressBookServerImpl::addNumber(string name, string number)
 {
 	int n = addressBook.contactlist_size();
 	for(int i = 0; i < n; ++i)

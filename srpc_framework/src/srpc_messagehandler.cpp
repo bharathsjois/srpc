@@ -11,6 +11,9 @@ using std::exception;
 using std::endl;
 using srpc::types::SrpcString;
 
+namespace srpc
+{
+
 void messageLoop(SrpcMessageHandler* messageHandler)
 {
     messageHandler->messageLoop();
@@ -84,15 +87,16 @@ void SrpcMessageHandler::messageLoop(void)
             onData(msgHdr);
         }catch(exception& e) {
             TRACE("%s", e.what());
-            onDisconnection(this);
+            onDisconnection(fd);
             break;
         }
     }
+    TRACE_DEBUG("Message loop ending...");
 }
 
 void SrpcMessageHandler::start()
 {
-    messageLoopThread = new std::thread(::messageLoop, this);
+    messageLoopThread = new std::thread(srpc::messageLoop, this);
 }
 
 void SrpcMessageHandler::stop()
@@ -106,4 +110,6 @@ void SrpcMessageHandler::stop()
 void SrpcMessageHandler::wait()
 {
 	messageLoopThread->join();
+}
+
 }

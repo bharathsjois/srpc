@@ -42,7 +42,7 @@ void AddressbookClientMsgHandler::onData(SrpcMessageHeader& msgHdr)
     }
 }
 
-void AddressbookClientMsgHandler::onDisconnection(SrpcMessageHandler* handler)
+void AddressbookClientMsgHandler::onDisconnection(int clientSocketFd)
 {
 	TRACE("Server disconnected");
 	cb->onServerDisconnection();

@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <netinet/in.h>
 
+using srpc::SrpcMessage;
 using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
 using srpc::types::SrpcMessageHeader_MessageType_METHOD;
 using srpc::types::SrpcString;

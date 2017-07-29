@@ -9,6 +9,8 @@ using google::protobuf::Message;
 using std::vector;
 using std::unique_ptr;
 
+namespace srpc
+{
 class SrpcMessage
 {
 public:
@@ -23,5 +25,5 @@ public:
 private:
     vector<unique_ptr<Message>> messages;
 };
-
+}
 #endif // SRPC_MESSAGE_H

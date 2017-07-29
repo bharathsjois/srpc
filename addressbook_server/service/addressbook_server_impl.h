@@ -1,20 +1,20 @@
-#ifndef ADDRESSBOOKSERVICE_H
-#define ADDRESSBOOKSERVICE_H
+#ifndef ADDRESSBOOK_SERVER_IMPL_H
+#define ADDRESSBOOK_SERVER_IMPL_H
 
-#include "addressbook_service.h"
+#include "addressbook_server.h"
 
-class AddressBookServiceImpl : public AddressbookService
+class AddressBookServerImpl : public AddressbookServer
 {
 public:
-    AddressBookServiceImpl(string host, int port);
+    AddressBookServerImpl(string host, int port);
     addressbook::AddressBook getContactList();
     addressbook::PhoneNumberList getNumbers(string name);
     void addContact(addressbook::Contact contact);
     void addNumber(string name, string number);
-    ~AddressBookServiceImpl();
+    ~AddressBookServerImpl();
 
 private:
     addressbook::AddressBook addressBook;
 };
 
-#endif // ADDRESSBOOKSERVICE_H
+#endif // ADDRESSBOOK_SERVER_IMPL_H

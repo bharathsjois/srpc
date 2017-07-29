@@ -1,12 +1,15 @@
-#include "addressbook_service_msghandler.h"
+#include "addressbook_server_msghandler.h"
+#include "addressbook_server.h"
+#include "srpc_message.h"
 #include "addressbook.pb.h"
 
 #include <iostream>
 
 using std::cout;
 using std::endl;
-using srpc::types::SrpcString;
 
+using srpc::SrpcMessage;
+using srpc::types::SrpcString;
 using srpc::types::SrpcMessageHeader;
 using srpc::types::SrpcMessageHeader_MessageNature;
 using srpc::types::SrpcMessageHeader_MessageNature_SYNC;
@@ -18,13 +21,13 @@ using srpc::types::SrpcMessageHeader_MessageType_RESULT;
 #define MID_ADDRESSBOOK_ADD_PERSON 3
 #define MID_ADDRESSBOOK_ADD_NUMBER 4
 
-AddressbookServiceMsgHandler::AddressbookServiceMsgHandler(int fd, AddressbookServiceIF *cb) :
+AddressbookServerMsgHandler::AddressbookServerMsgHandler(int fd, AddressbookServer *cb) :
     SrpcMessageHandler("AddressBookServer", fd)
 {
     this->cb = cb;
 }
 
-void AddressbookServiceMsgHandler::onData(SrpcMessageHeader &msgHdr)
+void AddressbookServerMsgHandler::onData(SrpcMessageHeader &msgHdr)
 {
     switch(msgHdr.mid()) {
 
@@ -75,7 +78,7 @@ void AddressbookServiceMsgHandler::onData(SrpcMessageHeader &msgHdr)
     }
 }
 
-void AddressbookServiceMsgHandler::onDisconnection(SrpcMessageHandler* handler)
+void AddressbookServerMsgHandler::onDisconnection(int clientSocketFd)
 {
-	cb->onMsgHandlerDisconnected(this);
+	cb->onDisconnection(this);
 }

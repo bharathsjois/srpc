@@ -22,7 +22,11 @@
 #endif
 
 #ifdef TRACING_ACTIVE
+#ifdef TRACE_DETAILED
 #define TRACE(fmt, ...) printf("%s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define TRACE(fmt, ...) printf(fmt "\n", ##__VA_ARGS__)
+#endif
 #endif
 
 #ifndef TRACE_DEBUG

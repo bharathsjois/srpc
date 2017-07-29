@@ -4,12 +4,14 @@
 #include "srpc_messagehandler.h"
 #include "addressbook_client_callback_if.h"
 
+using srpc::SrpcMessageHandler;
+
 class AddressbookClientMsgHandler : public SrpcMessageHandler
 {
 public:
     AddressbookClientMsgHandler(int fd, AddressbookClientCallbackIF *cb);
     void onData(SrpcMessageHeader &msgHdr);
-    void onDisconnection(SrpcMessageHandler* handler);
+    void onDisconnection(int clientSocketFd);
 private:
     AddressbookClientCallbackIF* cb;
 };

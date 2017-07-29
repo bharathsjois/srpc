@@ -16,6 +16,8 @@ using std::thread;
 using google::protobuf::Message;
 using srpc::types::SrpcMessageHeader;
 
+namespace srpc
+{
 class SrpcMessageHandler
 {
 public:
@@ -29,16 +31,18 @@ public:
     void stop();
     void wait();
     virtual void onData(SrpcMessageHeader& msgHdr) = 0;
-    virtual void onDisconnection(SrpcMessageHandler* handler) = 0;
+    virtual void onDisconnection(int clientSocktfd) = 0;
     void messageLoop();
     template<typename T>
     void addMessage(T& message);
     void traceMessage(string tag, Message& message);
 
-private:
+protected:
     int fd;
+private:
     string name;
     std::thread* messageLoopThread;
 };
+}
 
 #endif // SRPC_MESSAGEHANLDER_H
