@@ -1,11 +1,11 @@
 #include "srpc_messagehandler.h"
 #include "srpc.pb.h"
+#include "srpc_utils.h"
 
 #include <unistd.h>
 #include <stdexcept>
 #include <exception>
 #include <sys/socket.h>
-
 using std::logic_error;
 using std::exception;
 using std::endl;

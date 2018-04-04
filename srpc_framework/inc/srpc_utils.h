@@ -36,4 +36,8 @@
 #define TRACE_INFO
 #endif
 
+#ifndef TRACE
+#define TRACE
+#endif
+
 #endif /* SRPC_UTILS_H_ */

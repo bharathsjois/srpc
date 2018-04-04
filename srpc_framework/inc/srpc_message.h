@@ -3,6 +3,7 @@
 
 #include "srpc_message.h"
 #include <vector>
+#include <memory>
 #include "srpc.pb.h"
 
 using google::protobuf::Message;
